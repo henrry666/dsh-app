@@ -259,6 +259,22 @@ python3 scripts/install-development-skills.py
 
 The installer targets `~/.codex/skills` and `~/.dsh/skills`. The scaffold does not install dependencies, initialize Git, or build installers by default.
 
+## Runtime Screenshot
+### Main UI
+
+![dsh-app](/docs/images/mainwindow.png)
+
+### Skill Manager
+
+![dsh-app](/docs/images/截屏2026-09-20%2013.38.26.png)
+
+### Knowledge Base
+
+![dsh-app](docs/images/截屏2026-09-20%2013.39.13.png)
+
+#### Connecting Obsidian
+![dsh-app](docs/images/截屏2026-09-20%2013.39.44.png)
+
 ## Contributing
 
 Issues, design discussions, and pull requests are welcome. A typical contribution should follow this process:
