@@ -266,14 +266,14 @@ The installer targets `~/.codex/skills` and `~/.dsh/skills`. The scaffold does n
 
 ### Skill Manager
 
-![dsh-app](/docs/images/截屏2026-09-20%2013.38.26.png)
+![dsh-app](/docs/images/skillmanager.png)
 
 ### Knowledge Base
 
-![dsh-app](docs/images/截屏2026-09-20%2013.39.13.png)
+![dsh-app](docs/images/knowledgebase.png)
 
 #### Connecting Obsidian
-![dsh-app](docs/images/截屏2026-09-20%2013.39.44.png)
+![dsh-app](docs/images/connecttoObsidian.png)
 
 ## Contributing
 
