@@ -262,7 +262,7 @@ python3 scripts/install-development-skills.py
 ## 运行时界面展示
 ### 主界面
 
-![DSH Desktop 主界面](docs/images/main-window.png)
+![DSH Desktop 主界面](docs/images/截屏2026-09-20 13.37.46.png)
 
 ### 技能管理
 
