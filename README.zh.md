@@ -262,15 +262,15 @@ python3 scripts/install-development-skills.py
 ## 运行时界面展示
 ### 主界面
 
-![DSH Desktop 主界面](/docs/images/截屏2026-09-20 13.37.46.png)
+![dsh-app](/docs/images/截屏2026-09-20 13.37.46.png)
 
 ### 技能管理
 
-![技能管理界面](/docs/images/skill-manager.png)
+![dsh-app](/docs/images/截屏2026-09-20 13.37.46.png)
 
 ### 知识库
 
-![知识库界面](/docs/images/knowledge-base.png)
+![dsh-app](/docs/images/截屏2026-09-20 13.37.46.png)
 
 ## 贡献指南
 
