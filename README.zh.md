@@ -1,4 +1,4 @@
-# DSH Desktop
+# DSH App
 
 > 基于 DeepSeek Harness 的跨平台本地 AI 工作台，把会话、技能、知识库、长期记忆、子智能体、网页上下文和 Git 隔离带到桌面端。
 
@@ -10,7 +10,7 @@
 ![Platforms](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-DSH Desktop 将 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 作为本地 AI 内核，通过 Electron 提供原生桌面窗口、系统文件访问、全局快捷键、内置浏览器和 Git Worktree 管理。Harness 服务由客户端启动，只监听 `127.0.0.1`，关闭桌面窗口时一并停止。
+DSH App 将 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) 作为本地 AI 内核，通过 Electron 提供原生桌面窗口、系统文件访问、全局快捷键、内置浏览器和 Git Worktree 管理。Harness 服务由客户端启动，只监听 `127.0.0.1`，关闭桌面窗口时一并停止。
 
 项目适合两类使用方式：直接作为个人本地 AI 客户端使用，或者作为行业桌面应用的基础框架，继续开发标书应答、研究写作、视频制作等专用产品。
 
@@ -67,7 +67,7 @@ flowchart LR
     C --> S
 ```
 
-DSH Desktop 由三个安全边界清晰的界面组成：
+DSH App 由三个安全边界清晰的界面组成：
 
 1. **桌面壳**：加载本地 HTML、CSS 和 JavaScript，负责工具栏、状态面板和原生操作入口。
 2. **Harness 视图**：只加载启动时获得的精确回环地址，承载主要会话界面。
@@ -119,7 +119,7 @@ pnpm install
 pnpm run build
 ```
 
-如果 DSH Desktop 依赖的扩展尚未进入上游，请在执行构建前切换到包含这些扩展的分支。
+如果 DSH App 依赖的扩展尚未进入上游，请在执行构建前切换到包含这些扩展的分支。
 
 ### 2. 安装桌面工程依赖
 
@@ -172,7 +172,7 @@ npm start
 
 ## 用户数据
 
-DSH Desktop 将所有持久化数据放在用户目录下的 `~/.dsh`：
+DSH App 将所有持久化数据放在用户目录下的 `~/.dsh`：
 
 | 路径 | 作用 |
 | --- | --- |
@@ -312,7 +312,7 @@ python3 scripts/install-development-skills.py
 
 ## 许可证
 
-DSH Desktop 采用 [MIT License](LICENSE)。DeepSeek Harness 及其他第三方组件保留各自的许可证和版权声明。
+DSH App 采用 [MIT License](LICENSE)。DeepSeek Harness 及其他第三方组件保留各自的许可证和版权声明。
 
 ## 致谢
 
