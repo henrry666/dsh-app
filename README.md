@@ -1,4 +1,4 @@
-# DSH Desktop
+# DSH App
 
 > A cross-platform local AI workspace powered by DeepSeek Harness, bringing conversations, skills, knowledge bases, persistent memory, subagents, web context, and Git isolation to the desktop.
 
@@ -10,7 +10,7 @@
 ![Platforms](https://img.shields.io/badge/platform-macOS%20%7C%20Windows%20%7C%20Linux-lightgrey)
 ![License](https://img.shields.io/badge/license-MIT-green)
 
-DSH Desktop uses [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) as its local AI core and adds a native desktop window, system file access, a global shortcut, a built-in browser, and Git Worktree management through Electron. The client starts the Harness service on `127.0.0.1` and stops it when the desktop application exits.
+DSH App uses [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) as its local AI core and adds a native desktop window, system file access, a global shortcut, a built-in browser, and Git Worktree management through Electron. The client starts the Harness service on `127.0.0.1` and stops it when the desktop application exits.
 
 You can use this project as a personal local AI client or as the foundation for specialized desktop products such as bid-response authoring, research writing, and video-production tools.
 
