@@ -1,0 +1,70 @@
+{
+  "name": "dsh-desktop",
+  "version": "0.2.1",
+  "description": "Cross-platform desktop client for DeepSeek Harness",
+  "author": "DSH Desktop contributors",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "node --test test/*.test.js",
+    "runtime:prepare": "node scripts/prepare-runtime.js",
+    "runtime:prepare:win": "DSH_RUNTIME=runtime-win32-x64 DSH_TARGET_PLATFORM=win32 DSH_TARGET_ARCH=x64 node scripts/prepare-runtime.js",
+    "pack": "DSH_MAC_LOCAL=1 electron-builder --config electron-builder.mac.config.cjs --dir --arm64",
+    "dist": "electron-builder --config electron-builder.mac.config.cjs --mac dmg zip --arm64",
+    "dist:mac:local": "DSH_MAC_LOCAL=1 electron-builder --config electron-builder.mac.config.cjs --mac dmg zip --arm64 && node scripts/write-macos-local-guide.js",
+    "dist:win": "electron-builder --config electron-builder.win.config.cjs --win nsis --x64",
+    "smoke": "node scripts/smoke.js"
+  },
+  "devDependencies": {
+    "electron": "44.3.0",
+    "electron-builder": "26.15.3"
+  },
+  "build": {
+    "appId": "com.dsh.desktop",
+    "productName": "DSH Desktop",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "src/**/*",
+      "package.json"
+    ],
+    "extraResources": [
+      {
+        "from": "runtime",
+        "to": "runtime",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "asar": true,
+    "npmRebuild": false,
+    "mac": {
+      "target": [
+        "dmg",
+        "zip"
+      ],
+      "category": "public.app-category.developer-tools"
+    },
+    "win": {
+      "target": [
+        "nsis"
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "linux": {
+      "target": [
+        "AppImage",
+        "deb"
+      ],
+      "category": "Development"
+    }
+  }
+}

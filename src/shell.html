@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:">
+  <title>DSH Desktop</title>
+  <link rel="stylesheet" href="shell.css">
+</head>
+<body>
+  <header class="toolbar" id="drop-surface">
+    <div class="brand"><span class="brand-mark">D</span><strong>DSH Desktop</strong></div>
+    <div class="modes" aria-label="工作模式">
+      <button class="mode active" data-mode="chat">对话</button>
+      <button class="mode" data-mode="work">工作</button>
+    </div>
+    <div class="browser-controls hidden" id="browser-controls">
+      <button class="icon" id="browser-back" title="后退">‹</button>
+      <button class="icon" id="browser-forward" title="前进">›</button>
+      <button class="icon" id="browser-reload" title="刷新">↻</button>
+      <form id="browser-form"><input id="browser-address" autocomplete="off" placeholder="输入网址或搜索内容"></form>
+      <button id="browser-capture">加入上下文</button>
+    </div>
+    <div class="spacer"></div>
+    <button class="action drop-target" id="files-button" title="也可以把文件拖到这里">＋ 文件</button>
+    <button class="action" id="browser-button">浏览器</button>
+    <button class="action" id="git-button">Git 隔离</button>
+    <button class="action" id="context-button">上下文</button>
+  </header>
+
+  <main class="status" id="status">
+    <div class="status-card">
+      <div class="spinner" id="spinner"></div>
+      <h1 id="status-title">正在启动 DSH Desktop</h1>
+      <p id="status-message">正在准备本地工作环境…</p>
+      <div class="status-actions hidden" id="status-actions">
+        <button id="retry-button">重新连接</button>
+        <button class="secondary" id="logs-button">查看日志</button>
+      </div>
+    </div>
+  </main>
+
+  <aside class="drawer hidden" id="context-drawer">
+    <div class="drawer-head"><div><span class="eyebrow">CURRENT CONTEXT</span><h2>上下文来源</h2></div><button class="close" data-close>×</button></div>
+    <p class="muted">这些内容可能随下一次提问提供给智能体。</p>
+    <div id="context-list" class="source-list"></div>
+    <button class="wide secondary" id="context-refresh">刷新来源</button>
+  </aside>
+
+  <aside class="drawer hidden" id="git-drawer">
+    <div class="drawer-head"><div><span class="eyebrow">GIT WORKTREE</span><h2>创建隔离工作区</h2></div><button class="close" data-close>×</button></div>
+    <p class="muted">从当前 HEAD 创建独立分支和目录，适合同时执行多个开发任务。</p>
+    <label>Git 仓库</label>
+    <div class="field-row"><input id="git-repository" readonly placeholder="请选择仓库目录"><button id="git-choose">选择</button></div>
+    <label for="git-task">任务名称</label>
+    <input id="git-task" placeholder="例如：修复登录页面">
+    <button class="wide primary" id="git-create">创建并加入当前会话</button>
+    <div class="notice hidden" id="git-result"></div>
+    <div class="result-actions hidden" id="git-result-actions">
+      <button class="secondary" id="git-open">在文件管理器中打开</button>
+      <button class="danger" id="git-remove">清理工作区</button>
+    </div>
+  </aside>
+
+  <div class="drop-overlay hidden" id="drop-overlay"><div>释放文件，加入当前会话</div></div>
+  <script src="shell.js"></script>
+</body>
+</html>

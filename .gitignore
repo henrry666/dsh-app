@@ -1,0 +1,9 @@
+node_modules/
+runtime/
+runtime-win32-x64/
+release/
+artifacts/
+artifacts-*.png
+.DS_Store
+*.log
+.env*
