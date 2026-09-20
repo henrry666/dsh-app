@@ -259,6 +259,19 @@ python3 scripts/install-development-skills.py
 
 安装目标为 `~/.codex/skills` 和 `~/.dsh/skills`。脚手架默认不会安装依赖、初始化 Git 或生成安装包。
 
+## 运行时界面展示
+### 主界面
+
+![DSH Desktop 主界面](docs/images/main-window.png)
+
+### 技能管理
+
+![技能管理界面](docs/images/skill-manager.png)
+
+### 知识库
+
+![知识库界面](docs/images/knowledge-base.png)
+
 ## 贡献指南
 
 欢迎提交 Issue、设计讨论和 Pull Request。建议遵循以下流程：
@@ -282,17 +295,9 @@ python3 scripts/install-development-skills.py
 
 使用应用菜单打开日志目录，检查 Harness 是否输出了启动错误。还可以运行 `npm run smoke` 验证内置服务。
 
-### macOS 提示应用已损坏
-
-这通常表示安装包没有经过 Developer ID 签名和 Apple 公证。正式公开分发应使用 `npm run dist` 并配置签名与公证凭据；临时签名版本只适合可信设备测试。
-
 ### 是否需要另外安装 DSH
 
 从源码运行需要准备 Harness 源码。正确生成并打包后的安装程序已经包含 Harness 与 Node.js 运行环境，最终用户不需要另外安装 DSH。
-
-### 为什么没有把 `runtime/` 上传到 GitHub
-
-运行时体积大、与操作系统和 CPU 架构相关，并包含大量第三方依赖。仓库通过可复现脚本从指定 Harness 源码生成它，发布二进制文件应使用 GitHub Releases 等发布渠道。
 
 ## 路线图
 
