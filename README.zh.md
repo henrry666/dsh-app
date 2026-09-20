@@ -270,7 +270,10 @@ python3 scripts/install-development-skills.py
 
 ### 知识库
 
-![dsh-app](docs/images/截屏2026-09-20%2013.38.26.png)
+![dsh-app](docs/images/截屏2026-09-20%2013.39.13.png)
+
+#### 连接 Obsidian
+![dsh-app](docs/images/截屏2026-09-20%2013.39.44.png)
 
 ## 贡献指南
 
