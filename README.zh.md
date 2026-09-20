@@ -126,7 +126,7 @@ pnpm run build
 克隆本仓库后进入项目目录：
 
 ```bash
-npm install
+pnpm install
 ```
 
 ### 3. 生成内置运行环境
