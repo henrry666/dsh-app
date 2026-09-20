@@ -313,9 +313,24 @@ python3 scripts/install-development-skills.py
 ## 许可证
 
 DSH App 采用 [MIT License](LICENSE)。DeepSeek Harness 及其他第三方组件保留各自的许可证和版权声明。
-
+这是我的第一个开源项目，所以采用了MIT License。因为它限制很少，大家基本可以自由使用本软件，包括商业用途。
+### 下面是 MIT License允许做的事情：
+- 免费或收费使用
+- 复制和传播
+- 修改源代码
+- 发布二次开发版本
+- 合并到自己的项目
+- 闭源销售
+- 更换产品名称和界面
+- 将项目作为商业软件的一部分
+- 对软件进行再许可
+### 下面是您不能做的事情：
+- 删除作者的版权及许可证声明后，把原始代码完全声称为自己创作。
+- 要求作者为软件故障、数据损失或适销性承担保证责任；MIT 明确规定软件按原样提供，不附带保证。
+- 自动取得作者的商标、Logo、域名等权利。MIT 主要许可软件著作权，并没有授予品牌使用权。
+- 忽略项目中第三方依赖的许可证；每项依赖仍受自己的许可证约束。
 ## 致谢
 
 - [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness)：本项目使用的本地智能体与插件内核。
 - [Electron](https://www.electronjs.org/)：跨平台桌面运行框架。
-- 所有为 DSH Desktop 提交代码、测试、设计和反馈的贡献者。
+- 所有为 DSH App 提交代码、测试、设计和反馈的贡献者。
