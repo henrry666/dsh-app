@@ -266,11 +266,11 @@ python3 scripts/install-development-skills.py
 
 ### 技能管理
 
-![dsh-app](/docs/images/截屏2026-09-20 13.37.46.png)
+![dsh-app](/docs/images/截屏2026-09-20%2013.38.26.png)
 
 ### 知识库
 
-![dsh-app](/docs/images/截屏2026-09-20 13.37.46.png)
+![dsh-app](docs/images/截屏2026-09-20%2013.38.26.png)
 
 ## 贡献指南
 
