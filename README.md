@@ -290,10 +290,6 @@ This usually indicates that the package was not signed with Developer ID and not
 
 Source development requires a Harness checkout. A correctly assembled installer already contains Harness and Node.js, so end users do not need a separate DSH installation.
 
-### Why is `runtime/` not on GitHub?
-
-The runtime is large, operating-system and architecture specific, and contains a substantial third-party dependency closure. The repository generates it from a selected Harness source revision. Binary distributions should be published through a release channel such as GitHub Releases.
-
 ## Roadmap
 
 - Complete native Linux build and verification workflows
