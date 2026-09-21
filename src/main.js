@@ -5,6 +5,7 @@ import { fileURLToPath } from 'node:url';
 import { Backend, isInternalUrl } from './backend.js';
 import { addContextFiles, inspectContextSources, prepareDesktopState, readDesktopSettings, updateDesktopContext, writeDesktopSettings } from './desktop-state.js';
 import { GitIsolation } from './git-isolation.js';
+import { ensureRuntimeExtensions } from './runtime-support.js';
 import { prepareDshHome } from './user-home.js';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
@@ -322,6 +323,7 @@ else {
   app.on('second-instance', showAndFocus);
   app.whenReady().then(async () => {
     const runtime = join(app.isPackaged ? process.resourcesPath : root, 'runtime');
+    ensureRuntimeExtensions({ projectRoot: root, runtimeRoot: runtime, packaged: app.isPackaged });
     userData = app.getPath('userData');
     ({ home } = prepareDshHome(app.getPath('home'), join(userData, 'harness-data')));
     const prepared = prepareDesktopState(home);
