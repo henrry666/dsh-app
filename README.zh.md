@@ -300,10 +300,10 @@ python3 scripts/install-development-skills.py
 
 ### 知识库
 
-![dsh-app](docs/images/knowledgebase.png)
+![dsh-app](/docs/images/knowledgebase.png)
 
 #### 连接 Obsidian
-![dsh-app](docs/images/connettoObsidian.png)
+![dsh-app](/docs/images/connettoObsidian.png)
 
 ## 贡献指南
 
