@@ -84,7 +84,7 @@ Electron 主进程负责生命周期、IPC 校验、视图布局、Harness 子�
 
 本仓库维护 Electron 桌面壳、桌面上下文扩展、运行时组装脚本和测试，不复制完整 Harness 源码。构建时，`scripts/prepare-runtime.js` 从单独的 Harness 源码目录生成可随应用分发的运行环境。
 
-当前开发版本使用 DeepSeek Harness `dsh-v0.1.1-rc.2` 作为基础，并需要包含 DSH Desktop 所需的技能、记忆和目录知识库扩展。若这些扩展尚未合并到上游，请使用对应的 Harness 分支或提交构建运行时。单独使用上游基础版本时，桌面窗口可以启动，但部分扩展功能可能不可用。
+当前开发版本使用 DeepSeek Harness `dsh-v0.1.1-rc.2` 作为基础，并需要包含 DSH App 所需的技能、记忆和目录知识库扩展。若这些扩展尚未合并到上游，请使用对应的 Harness 分支或提交构建运行时。单独使用上游基础版本时，桌面窗口可以启动，但部分扩展功能可能不可用。
 
 运行时生成时会复制 Harness 的 `LICENSE`、`THIRD_PARTY_NOTICES.md` 和 Node.js 许可证，满足二进制分发时的许可证保留要求。
 
@@ -112,6 +112,14 @@ macOS 正式发布需要 Developer ID 证书和 Apple 公证凭据。未签名�
 
 ### 1. 准备 DeepSeek Harness
 
+DSH App 的运行时组装脚本需要 Node.js 24 和 pnpm。若尚未安装 pnpm，可先安装 Harness 工作区使用的版本：
+
+```bash
+npm install --global pnpm@11.7.0
+```
+
+克隆并编译 Harness：
+
 ```bash
 git clone https://github.com/deepseek-ai/deepseek-harness.git
 cd deepseek-harness
@@ -119,9 +127,31 @@ pnpm install
 pnpm run build
 ```
 
-如果 DSH App 依赖的扩展尚未进入上游，请在执行构建前切换到包含这些扩展的分支。
+`pnpm run build` 会生成 Host、Client、Web 前端和 CLI 产物。DSH App 至少需要构建后的 `apps/cli/lib/bin.js` 以及 Web 前端资源。全新克隆、切换 Harness 分支或修改 Harness 源码后，都应重新执行该命令。
 
-### 2. 安装桌面工程依赖
+如果 DSH App 依赖的扩展尚未进入上游，请在安装依赖和编译前切换到包含这些扩展的分支。
+
+### 2. 单独验证 Harness
+
+先在 Harness 仓库根目录启动 Web UI，确认内核本身可以运行：
+
+```bash
+pnpm dsh web --no-open
+```
+
+命令会在完整插件树启动后打印服务地址，默认是 `http://127.0.0.1:3080`。在浏览器中打开该地址并确认会话页面正常加载，然后按 `Ctrl+C` 停止服务。若希望命令自动打开默认浏览器，可以省略 `--no-open`：
+
+```bash
+pnpm dsh web
+```
+
+如默认端口被占用，可指定其他端口：
+
+```bash
+pnpm dsh web --no-open --port 3081
+```
+
+### 3. 安装桌面工程依赖
 
 克隆本仓库后进入项目目录：
 
@@ -129,7 +159,7 @@ pnpm run build
 pnpm install
 ```
 
-### 3. 生成内置运行环境
+### 4. 生成内置运行环境
 
 macOS 或 Linux：
 
@@ -146,7 +176,7 @@ npm run runtime:prepare
 
 生成内容位于 `runtime/`。这是本机产物，已经加入 `.gitignore`，不应提交到仓库。
 
-### 4. 启动桌面客户端
+### 5. 启动桌面客户端
 
 ```bash
 npm start
@@ -191,7 +221,7 @@ DSH App 将所有持久化数据放在用户目录下的 `~/.dsh`：
 ## 项目结构
 
 ```text
-DSH Desktop/
+DSH App/
 ├── build/                    # 平台权限和签名配置
 ├── docs/                     # 需求与技术设计
 ├── scripts/                  # 运行时准备、补丁、冒烟测试和发布辅助脚本
@@ -273,7 +303,7 @@ python3 scripts/install-development-skills.py
 ![dsh-app](docs/images/knowledgebase.png)
 
 #### 连接 Obsidian
-![dsh-app](docs/images/connecttoObsidian.png)
+![dsh-app](docs/images/connettoObsidian.png)
 
 ## 贡献指南
 

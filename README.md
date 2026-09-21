@@ -67,7 +67,7 @@ flowchart LR
     C --> S
 ```
 
-DSH Desktop has three user-interface security boundaries:
+DSH App has three user-interface security boundaries:
 
 1. **Desktop shell**: loads local HTML, CSS, and JavaScript for the toolbar, status panels, and native actions.
 2. **Harness view**: loads only the exact loopback origin announced during startup and hosts the primary conversation interface.
@@ -84,7 +84,7 @@ See the following documents for the full contract and implementation design:
 
 This repository maintains the Electron shell, desktop-context extensions, runtime assembly scripts, and tests. It does not copy the full Harness source tree. During development, `scripts/prepare-runtime.js` builds a distributable runtime from a separate Harness source checkout.
 
-The current development version is based on DeepSeek Harness `dsh-v0.1.1-rc.2` and expects the skills, memory, and directory knowledge-base extensions required by DSH Desktop. If those extensions have not been merged upstream, build the runtime from the corresponding Harness branch or commits. A plain upstream checkout may start successfully while leaving some extended features unavailable.
+The current development version is based on DeepSeek Harness `dsh-v0.1.1-rc.2` and expects the skills, memory, and directory knowledge-base extensions required by DSH App. If those extensions have not been merged upstream, build the runtime from the corresponding Harness branch or commits. A plain upstream checkout may start successfully while leaving some extended features unavailable.
 
 Runtime assembly copies the Harness `LICENSE`, `THIRD_PARTY_NOTICES.md`, and the Node.js license so binary distributions retain the required notices.
 
@@ -112,6 +112,14 @@ Public macOS distribution requires a Developer ID certificate and Apple notariza
 
 ### 1. Prepare DeepSeek Harness
 
+The DSH App runtime assembly requires Node.js 24 and pnpm. If pnpm is not installed, install the version used by the Harness workspace:
+
+```bash
+npm install --global pnpm@11.7.0
+```
+
+Clone and build Harness:
+
 ```bash
 git clone https://github.com/deepseek-ai/deepseek-harness.git
 cd deepseek-harness
@@ -119,9 +127,31 @@ pnpm install
 pnpm run build
 ```
 
-If DSH Desktop's required extensions are not yet available upstream, switch to the branch that contains them before building.
+`pnpm run build` produces the Host, Client, Web frontend, and CLI artifacts. DSH App requires at least the built `apps/cli/lib/bin.js` entry point and the Web frontend assets. Run this command again after a fresh clone, a Harness branch change, or a Harness source change.
 
-### 2. Install desktop dependencies
+If DSH App's required extensions are not yet available upstream, switch to the branch that contains them before installing dependencies and building.
+
+### 2. Verify Harness independently
+
+Start the Web UI from the Harness repository root before integrating it with the desktop client:
+
+```bash
+pnpm dsh web --no-open
+```
+
+After the complete plugin tree starts, the command prints the service address, which defaults to `http://127.0.0.1:3080`. Open that address in a browser, confirm that the conversation interface loads, and press `Ctrl+C` to stop the service. Omit `--no-open` if the command should launch the default browser automatically:
+
+```bash
+pnpm dsh web
+```
+
+Choose another port if the default is already in use:
+
+```bash
+pnpm dsh web --no-open --port 3081
+```
+
+### 3. Install desktop dependencies
 
 After cloning this repository, enter its directory and run:
 
@@ -129,7 +159,7 @@ After cloning this repository, enter its directory and run:
 npm install
 ```
 
-### 3. Assemble the embedded runtime
+### 4. Assemble the embedded runtime
 
 On macOS or Linux:
 
@@ -146,7 +176,7 @@ npm run runtime:prepare
 
 The generated runtime is written to `runtime/`. It is machine-generated, ignored by Git, and should not be committed.
 
-### 4. Start the desktop client
+### 5. Start the desktop client
 
 ```bash
 npm start
@@ -172,7 +202,7 @@ Packaging is intentionally separate from routine development and should run only
 
 ## User data
 
-DSH Desktop stores persistent data under `~/.dsh`:
+DSH App stores persistent data under `~/.dsh`:
 
 | Path | Purpose |
 | --- | --- |
@@ -191,7 +221,7 @@ Uninstalling the application does not automatically remove `~/.dsh`. Back up mem
 ## Project structure
 
 ```text
-DSH Desktop/
+DSH App/
 ├── build/                    # Platform entitlements and signing configuration
 ├── docs/                     # Requirements and technical design
 ├── scripts/                  # Runtime assembly, patches, smoke tests, and release helpers
@@ -273,7 +303,7 @@ The installer targets `~/.codex/skills` and `~/.dsh/skills`. The scaffold does n
 ![dsh-app](docs/images/knowledgebase.png)
 
 #### Connecting Obsidian
-![dsh-app](docs/images/connecttoObsidian.png)
+![dsh-app](docs/images/connettoObsidian.png)
 
 ## Contributing
 
@@ -316,10 +346,10 @@ Source development requires a Harness checkout. A correctly assembled installer 
 
 ## License
 
-DSH Desktop is available under the [MIT License](LICENSE). DeepSeek Harness and other third-party components retain their respective licenses and copyright notices.
+DSH App is available under the [MIT License](LICENSE). DeepSeek Harness and other third-party components retain their respective licenses and copyright notices.
 
 ## Acknowledgements
 
 - [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness), the local agent and plugin core used by this project.
 - [Electron](https://www.electronjs.org/), the cross-platform desktop runtime.
-- Everyone who contributes code, tests, design work, and feedback to DSH Desktop.
+- Everyone who contributes code, tests, design work, and feedback to DSH App.
